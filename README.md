@@ -4,9 +4,9 @@ Projeto de conclusão do curso **Profissão: Engenheiro de Qualidade de Software
 
 ## Sobre o projeto
 
-Este repositório contém a estratégia de testes e automações desenvolvidas para validação do e-commerce **EBAC Shop**, contemplando testes WEB, API e Mobile.
+Este repositório contém a estratégia de testes, documentação e automações desenvolvidas para validação do e-commerce **EBAC Shop**.
 
-O objetivo é simular o fluxo completo de trabalho de um **Quality Engineer**, desde o planejamento de testes até a implementação de automações e evidências de execução.
+O projeto simula o fluxo completo de atuação de um **Quality Engineer**, contemplando planejamento, definição de estratégia, criação de critérios de aceitação, casos de teste, automação WEB, API, Mobile, testes de performance e integração contínua.
 
 ---
 
@@ -14,43 +14,52 @@ O objetivo é simular o fluxo completo de trabalho de um **Quality Engineer**, d
 
 ```bash
 TCC-EBAC-QE/
-├── UI/                 # Automação WEB com Cypress
-├── API/                # Automação API com Supertest + Jest
-├── Mobile/             # Automação Mobile Android com Appium + WebdriverIO
-├── docs/               # Documentação do projeto
+├── UI/                      # Automação WEB com Cypress
+├── API/                     # Automação API com Supertest + Jest
+├── Mobile/                  # Automação Mobile Android com Appium + WebdriverIO
+├── Performance/             # Testes de performance com K6
+├── docs/                    # Documentação do projeto
 │   ├── estrategia-teste.md
 │   ├── criterios-aceitacao.feature
 │   ├── casos-de-teste.md
 │   └── mapa-mental.png
-└── README.md
+│   └── resultado-k6.png
+└── .github/workflows/       # Integração contínua
+    └── ci.yml
 ```
 
 ---
 
 ## Tecnologias utilizadas
 
-### WEB
+### UI Automation
 - Cypress
 - JavaScript
 - Page Object Model (POM)
 
-### API
+### API Automation
 - Supertest
 - Jest
 - JSON Schema Validation
 
-### Mobile
+### Mobile Automation
 - Appium
 - WebdriverIO
 - Android Emulator
 - Page Object Model (POM)
 
+### Performance Testing
+- K6
+
+### CI/CD
+- GitHub Actions
+
 ---
 
 ## Funcionalidades testadas
 
-### UI
-- Login válido
+### WEB
+- Login com sucesso
 - Login inválido
 - Adicionar produto ao carrinho
 
@@ -59,25 +68,40 @@ TCC-EBAC-QE/
 - Criar cupom
 - Validar cupom duplicado
 - Validar campos obrigatórios
-- Validação de contrato
+- Validar contrato da API
 
 ### Mobile
 - Exibir catálogo de produtos
-- Abrir detalhes do primeiro produto
+- Abrir primeiro produto
+
+### Performance
+- Login de usuários simultâneos
+- Acesso ao catálogo de produtos
+
+Configuração:
+- 20 usuários virtuais
+- duração: 2 minutos
+- ramp-up: 20 segundos
 
 ---
 
-## Como executar o projeto
+## Integração contínua
 
-### Clonar repositório
+Pipeline automatizado com GitHub Actions para execução de:
 
-```bash
-git clone https://github.com/SEU-USUARIO/TCC-EBAC-QE.git
-```
+- Testes UI
+- Testes API
+- Testes de Performance
+
+Executados automaticamente em:
+- push
+- pull request
 
 ---
 
-## Executar testes WEB
+## Como executar
+
+### UI
 
 ```bash
 cd UI
@@ -85,9 +109,7 @@ npm install
 npm test
 ```
 
----
-
-## Executar testes API
+### API
 
 ```bash
 cd API
@@ -95,17 +117,12 @@ npm install
 npm test
 ```
 
----
-
-## Executar testes Mobile
+### Mobile
 
 Pré-requisitos:
 - Android Studio
-- Emulator Android
-- Java JDK
+- Android Emulator
 - Appium
-
-Executar:
 
 ```bash
 cd Mobile
@@ -113,23 +130,39 @@ npm install
 npm run wdio
 ```
 
+### Performance
+
+Pré-requisito:
+- K6 instalado
+
+```bash
+cd Performance
+k6 run performance-test.js
+```
+
 ---
 
-## Estratégia de testes
+## Estratégia aplicada
 
 O projeto contempla:
 
+- Testes funcionais
+- Testes não funcionais
 - Testes manuais
 - Testes automatizados
-- Testes funcionais
-- Testes de API
-- Testes mobile
-- Critérios de aceitação em Gherkin
-- Casos de teste positivos, negativos e alternativos
+- Testes WEB
+- Testes API
+- Testes Mobile
+- Testes de performance
+- CI/CD
+- Critérios Gherkin
+- Casos positivos, negativos e alternativos
 
 ---
 
 ## Autor
 
 **Adriano Silva Andrade de Araujo**  
-QA Engineer | Test Automation | Software Quality
+QA Engineer | Test Automation | Software Quality  
+
+GitHub: https://github.com/AdrianoSilva130
