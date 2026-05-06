@@ -48,3 +48,14 @@ jobs:
 
       - name: Run API tests
         run: npm test
+
+  performance-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Performance
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: grafana/setup-k6-action@v1
+      - run: k6 run performance-test.js
